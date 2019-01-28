@@ -17,7 +17,7 @@
 #include "Projeto4_Aluno.h"
 
 //Define clear e cls para funcionar tanto em windows como em unix
-#ifdef _unix_ 
+#ifdef _unix_
 #define clear "clear"
 #else
 #define clear "cls"

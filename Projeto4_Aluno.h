@@ -188,13 +188,13 @@ int insereRegistro(aluno *aux){
 
 //Funcao que inativa uma linha do arquivo
 void inativaRegistro(int rid){
-	char oldname[] = "bd.txt";
+	char oldname[] = "db.txt";
 	char newname[] = "temp.txt";
 
  //Abre o arquivo atual de registros
- FILE *Ler = fopen("db.txt","r");
+ FILE *Ler = fopen(oldname,"r");
  //Abre o arquivo auxiliar de registros
- FILE *Novo = fopen("temp.txt","w+");
+ FILE *Novo = fopen(newname,"w+");
 
  //Variaveis auxiliares de leitura
  int Linha=0, linha=0, id=0, x=0, idade, Status;
@@ -218,17 +218,15 @@ void inativaRegistro(int rid){
 				 //Imprime o registro atualizado no novo arquivo
 				 fprintf(Novo,"%d %d %s %d %s %c\n",linha, id, nome, idade, email, 'I');
 			 }
+
 			 else{
 				 //Copia o registro para o novo arquivo
-				 fprintf(Novo,"%d %d %s %d %s %c\n",linha, id, nome, idade, email, 'I');
+				 fprintf(Novo,"%d %d %s %d %s %c\n",linha, id, nome, idade, email, status);
 			 }
+
 		 }
 	 }
-
-	 int status;
- }
-
- else{
+ } else{
 	 //caso o arquivo não exista
 	 puts("ERRO: Não foi possível abrir os registros!\n");
 	 return;
@@ -240,7 +238,7 @@ void inativaRegistro(int rid){
 
 
  //remoção dos registros antigos
- Status = remove("temp.txt");
+ Status = remove(newname);
  //renomeia o registro auxiliar para o nome padrão
  Status = rename(oldname, newname);
 
