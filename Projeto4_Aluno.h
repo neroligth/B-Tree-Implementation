@@ -188,7 +188,7 @@ int insereRegistro(aluno *aux){
 
 //Funcao que inativa uma linha do arquivo
 void inativaRegistro(int rid){
-	char oldname[] = "db.txt";
+	char oldname[] = "bd.txt";
 	char newname[] = "temp.txt";
 
  //Abre o arquivo atual de registros
@@ -211,7 +211,7 @@ void inativaRegistro(int rid){
 
 		 //Verifica se a leitura foi bem sucedida
 		 if(x > 0){
-
+			 linha++;
 			 //verifica se a linha lida é a desejada
 			 if(Linha == rid){
 				 Status = 1;
@@ -238,9 +238,9 @@ void inativaRegistro(int rid){
 
 
  //remoção dos registros antigos
- Status = remove(newname);
+ Status = remove(oldname);
  //renomeia o registro auxiliar para o nome padrão
- Status = rename(oldname, newname);
+ Status = rename(newname, oldname);
 
  //caso a remoção seja bem sucedida
  if(Status == 0)
